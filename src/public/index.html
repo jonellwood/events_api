@@ -1,0 +1,82 @@
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="./app.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Event Add Form</h1>
+  <form id="add_event_form" class="form">
+    <label for "event_title">Name of your Event</label>
+    <input type="text" name="event_title"> <br>
+    <label for "event_location_name">Event Location Name</label>
+    <input type="text" name="event_location_name"> <br>
+
+    <label for "event_location_street">Street address</label>
+    <input type="text" name="event_location_street"> <br>
+
+    <label for "event_location_city">City</label>
+    <input type="text" name="event_location_city"> <br>
+
+    <label for "event_location_state">State</label>
+    <input type="text" name="event_location_state"> <br>
+
+    <label for "event_location_zip">Zip</label>
+    <input type="text" name="event_location_zip"> <br>
+
+    <label for "event_start_date">Event Start Date</label>
+    <input type="text" name="event_start_date"> <br>
+
+    <label for "event_start_time">Event Start Time</label>
+    <input type="text" name="event_start_time"> <br>
+
+    <label for "event_end_date">Event End Date</label>
+    <input type="text" name="event_end_date"> <br>
+
+    <label for "event_end_time">Event End Time</label>
+    <input type="text" name="event_end_time"> <br>
+
+    <label for "event_description">Event Description</label>
+    <input type="text" name="event_description"> <br>
+
+    <label for "event_url">Event website</label>
+    <input type="text" name="event_url"> <br>
+
+    <label for "event_facebook">Event Facebook Page</label>
+    <input type="text" name="event_facebook"> <br>
+
+    <label for "event_twitter">Event Twitter</label>
+    <input type="text" name="event_twitter"> <br>
+
+    <button type="submit">Register</button>
+  </form>
+
+  <script>
+    ;(() => {
+      const form = document.getElementById("add_event_form")
+
+        form.addEventListener("submit", async (e) => {
+          e.preventDefault();
+          try {
+            const values = Object.values(form).reduce((obj, field) => {
+              if(field.name) {
+                obj[field.name] = field.value;
+              }
+              return obj;
+            }, {})
+            await fetch('/api/register', {
+              method: "POST",
+              body: JSON.stringify(values),
+              headers: { "Content-type": "application/json; charset=UTF-8" },
+            })
+          } catch (e) {
+            console.error(e);
+          }
+        })
+    })()
+
+  </script>
+</body>
+</html>
