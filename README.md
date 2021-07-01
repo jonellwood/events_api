@@ -26,4 +26,9 @@ Event objects:
     - Event_Contact_Name
     - Event_Contact_Email
     - Event_Contact_Phone
--            
+
+
+*Future Stuff*
+- Event_Type_Classification - allow searching for certain event types such as "concert", "meeting", "fund raiser", etc...
+- Some type of user account creation and validation? Use JWT? Some way to allow a public facing (with auth) GUI for event inserting by someone other than  me.
+- Look at data managemnet in db options. Should record be deleted after certain period of time? How to prevent HUGE data set of useless data?
